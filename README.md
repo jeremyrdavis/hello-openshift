@@ -2,6 +2,16 @@
 
 This project is a REST API for "Hello, World!" messages
 
+# Step 03
+
+Add a new package, "greetings"
+Add the following classes: 
+* RESTApi
+* GreetingDTO
+* Greeting
+* SourceSystem
+
+
 # Basics
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
