@@ -5,10 +5,11 @@ import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import org.eclipse.microprofile.reactive.messaging.Channel;
+import org.eclipse.microprofile.reactive.messaging.Emitter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.beans.Transient;
 import java.util.stream.Collectors;
 
 @Path("/greetings")
@@ -21,12 +22,16 @@ public class RESTApi {
     @Inject
     GreetingRepository greetingRepository;
 
+    @Inject
+    @Channel("greetings-out")
+    Emitter<GreetingDTO> greetingEmitter;
+
     @POST
     @Transactional
     public Response addGreeting(GreetingDTO greetingDTO) {
 
         LOGGER.debug("adding Greeting: {}", greetingDTO);
-        greetingRepository.persist(greetingDTO);
+        greetingEmitter.send(greetingDTO);
         return Response.accepted().build();
     }
 
