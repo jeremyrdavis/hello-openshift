@@ -39,7 +39,7 @@ public class RESTApi {
     @GET
     public Response allGreetings(){
         return Response.ok().entity(greetingRepository.listAll().stream().map(greeting -> {
-            return new GreetingDTO(greeting.id, greeting.text, greeting.author, greeting.sourceSystem, greeting.createdAt);
+            return new GreetingDTO(greeting.id, greeting.text, greeting.author, greeting.sourceSystem, greeting.createdAt, greeting.isFamilyFriendly);
         }).collect(Collectors.toList())).build();
     }
 }

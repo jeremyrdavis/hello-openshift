@@ -9,8 +9,8 @@ import jakarta.enterprise.context.ApplicationScoped;
 public class GreetingRepository implements PanacheRepository<Greeting> {
 
     GreetingDTO persist(GreetingDTO greetingDTO) {
-        Greeting greeting = new Greeting(greetingDTO.text(), greetingDTO.author(), greetingDTO.sourceSystem(), greetingDTO.createdAt());
+        Greeting greeting = new Greeting(greetingDTO.text(), greetingDTO.author(), greetingDTO.sourceSystem(), greetingDTO.createdAt(), greetingDTO.isVerifiedFamilyFriendly());
         greeting.persist();
-        return new GreetingDTO(greeting.id, greeting.text, greeting.author, greeting.sourceSystem, greeting.createdAt);
+        return new GreetingDTO(greeting.id, greeting.text, greeting.author, greeting.sourceSystem, greeting.createdAt, greeting.isFamilyFriendly);
     }
 }

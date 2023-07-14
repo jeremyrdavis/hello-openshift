@@ -1,5 +1,6 @@
-package com.redhat.greetings.web;
+package com.redhat.greetings.repository.api.domain;
 
+import com.redhat.greetings.domain.GreetingDTO;
 import com.redhat.greetings.domain.SourceSystem;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;
@@ -17,18 +18,17 @@ public class Greeting extends PanacheEntity {
 
     Instant createdAt;
 
-    boolean isFamilyFriendly;
+    boolean isVerifiedFamilyFriendly;
 
-    public Greeting(String text, String author, SourceSystem sourceSystem, Instant createdAt, boolean isFamilyFriendly) {
+    public Greeting() {
+    }
+
+    public Greeting(String text, String author, SourceSystem sourceSystem, Instant createdAt, boolean isVerifiedFamilyFriendly) {
         this.text = text;
         this.author = author;
         this.sourceSystem = sourceSystem;
         this.createdAt = createdAt;
-        this.isFamilyFriendly = isFamilyFriendly;
-    }
-
-    public Greeting() {
-
+        this.isVerifiedFamilyFriendly = isVerifiedFamilyFriendly;
     }
 
     @Override
@@ -38,21 +38,18 @@ public class Greeting extends PanacheEntity {
                 ", author='" + author + '\'' +
                 ", sourceSystem=" + sourceSystem +
                 ", createdAt=" + createdAt +
-                ", isFamilyFriendly=" + isFamilyFriendly +
+                ", isVerifiedFamilyFriendly=" + isVerifiedFamilyFriendly +
                 ", id=" + id +
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        Greeting other = (Greeting) o;
-        return id != null && id.equals(other);
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
+    static Greeting fromGreetingDTO(GreetingDTO greetingDTO) {
+        return new Greeting(
+                greetingDTO.text(),
+                greetingDTO.author(),
+                greetingDTO.sourceSystem(),
+                greetingDTO.createdAt(),
+                greetingDTO.isVerifiedFamilyFriendly);
     }
 
 

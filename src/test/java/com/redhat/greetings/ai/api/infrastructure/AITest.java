@@ -12,9 +12,9 @@ public class AITest {
     public void testAI() {
 
         AIImpl ai = new AIImpl();
-        assertFalse(ai.isFamilyFriendly(new GreetingDTO(null, "VMWare is the best!", null, null, null)));
-        assertFalse(ai.isFamilyFriendly(new GreetingDTO(null, "Rancher is awesome!", null, null, null)));
-        assertFalse(ai.isFamilyFriendly(new GreetingDTO(null, "Ubuntu IS Linux", null, null, null)));
-        assertTrue(ai.isFamilyFriendly(new GreetingDTO(null, "Red Hat", null, null, null)));
+        assertFalse(ai.isFamilyFriendly(new GreetingDTO(null, "VMWare is the best!", null, null, null, false)));
+        assertFalse(ai.isFamilyFriendly(new GreetingDTO(null, "Rancher is awesome!", null, null, null, false)));
+        assertFalse(ai.isFamilyFriendly(new GreetingDTO(null, "Ubuntu IS Linux", null, null, null, false)));
+        assertTrue(ai.isFamilyFriendly(new GreetingDTO(null, "Red Hat", null, null, null, false)));
     }
 }
