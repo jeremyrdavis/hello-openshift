@@ -1,4 +1,4 @@
-package com.redhat.greetings;
+package com.redhat.greetings.web;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;

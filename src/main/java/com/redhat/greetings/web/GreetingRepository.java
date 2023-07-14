@@ -1,6 +1,7 @@
-package com.redhat.greetings;
+package com.redhat.greetings.web;
 
 
+import com.redhat.greetings.domain.GreetingDTO;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 

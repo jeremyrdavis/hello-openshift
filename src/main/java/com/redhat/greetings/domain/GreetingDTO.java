@@ -1,4 +1,6 @@
-package com.redhat.greetings;
+package com.redhat.greetings.domain;
+
+import com.redhat.greetings.web.SourceSystem;
 
 import java.time.Instant;
 

@@ -1,4 +1,4 @@
-package com.redhat.greetings;
+package com.redhat.greetings.web;
 
 public enum SourceSystem {
 

@@ -1,5 +1,6 @@
-package com.redhat.greetings;
+package com.redhat.greetings.web;
 
+import com.redhat.greetings.domain.GreetingDTO;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;

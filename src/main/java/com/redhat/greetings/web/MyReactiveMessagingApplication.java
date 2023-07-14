@@ -1,15 +1,10 @@
-package com.redhat.greetings;
+package com.redhat.greetings.web;
 
-import io.quarkus.runtime.StartupEvent;
 import org.eclipse.microprofile.reactive.messaging.*;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.event.Observes;
-import jakarta.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.stream.Stream;
 
 @ApplicationScoped
 public class MyReactiveMessagingApplication {
