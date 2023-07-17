@@ -1,5 +1,6 @@
 package com.redhat.greetings.ai.api.infrastructure;
 
+import com.redhat.greetings.ai.AIImpl;
 import com.redhat.greetings.domain.GreetingDTO;
 import org.junit.jupiter.api.Test;
 

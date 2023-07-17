@@ -1,5 +1,6 @@
-package com.redhat.greetings.web;
+package com.redhat.greetings.repository.api.infrastructure;
 
+import com.redhat.greetings.domain.GreetingDTO;
 import org.eclipse.microprofile.reactive.messaging.*;
 
 import jakarta.enterprise.context.ApplicationScoped;
@@ -12,7 +13,8 @@ public class MyReactiveMessagingApplication {
     private static final Logger LOGGER = LoggerFactory.getLogger(MyReactiveMessagingApplication.class);
 
     @Incoming("greetings-in")
-    public void greetingsSink(Greeting greeting) {
-        LOGGER.debug("Greeting incoming: {}", greeting);
+    public void greetingsSink(GreetingDTO greetingDTO) {
+
+        LOGGER.debug("Greeting incoming: {}", greetingDTO);
     }
 }

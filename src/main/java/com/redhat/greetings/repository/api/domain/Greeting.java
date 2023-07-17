@@ -49,7 +49,7 @@ public class Greeting extends PanacheEntity {
                 greetingDTO.author(),
                 greetingDTO.sourceSystem(),
                 greetingDTO.createdAt(),
-                greetingDTO.isVerifiedFamilyFriendly);
+                greetingDTO.isVerifiedFamilyFriendly());
     }
 
 

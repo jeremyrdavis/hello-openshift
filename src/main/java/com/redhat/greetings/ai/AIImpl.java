@@ -1,4 +1,4 @@
-package com.redhat.greetings.ai.api.infrastructure;
+package com.redhat.greetings.ai;
 
 import com.redhat.greetings.ai.api.AIAPI;
 import com.redhat.greetings.domain.GreetingDTO;
@@ -10,7 +10,7 @@ import java.util.List;
 @ApplicationScoped
 public class AIImpl implements AIAPI {
 
-    List<String> unFriendlyWords = new ArrayList<>(){{
+    static List<String> unFriendlyWords = new ArrayList<>(){{
         add("VMWare");
         add("Rancher");
         add("Ubuntu");
