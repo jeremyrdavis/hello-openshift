@@ -41,14 +41,13 @@ public class GreetingService {
 
     public List<GreetingJSON> allGreetings() {
         if (greetingJSONList == null) {
-            greetingJSONList = new ArrayList<>();
             greetingJSONList = getGreetings();
         }
         return greetingJSONList;
     }
 
     private List<GreetingJSON> getGreetings() {
-        if (greetingJSONList == null || greetingJSONList.isEmpty()) {
+        if (greetingJSONList == null) {
             greetingJSONList = new ArrayList<>();
             greetingRepositoryAPI.allGreetings().forEach(greetingDTO -> {
                 greetingJSONList.add(new GreetingJSON(greetingDTO.text(), greetingDTO.author()));
