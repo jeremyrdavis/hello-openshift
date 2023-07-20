@@ -1,4 +1,4 @@
-package com.redhat.greetings.repository.api.infrastructure;
+package com.redhat.greetings.cqrs.api.infrastructure;
 
 import com.redhat.greetings.domain.GreetingDTO;
 import org.eclipse.microprofile.reactive.messaging.*;

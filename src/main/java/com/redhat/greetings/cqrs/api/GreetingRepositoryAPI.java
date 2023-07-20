@@ -1,4 +1,4 @@
-package com.redhat.greetings.repository.api;
+package com.redhat.greetings.cqrs.api;
 
 import com.redhat.greetings.domain.GreetingDTO;
 

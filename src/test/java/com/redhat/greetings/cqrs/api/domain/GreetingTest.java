@@ -1,9 +1,7 @@
-package com.redhat.greetings.repository.api.domain;
+package com.redhat.greetings.cqrs.api.domain;
 
 import com.redhat.greetings.domain.GreetingDTO;
 import com.redhat.greetings.domain.SourceSystem;
-import com.redhat.greetings.repository.api.domain.Greeting;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import org.junit.jupiter.api.Test;
 
 import java.time.Instant;

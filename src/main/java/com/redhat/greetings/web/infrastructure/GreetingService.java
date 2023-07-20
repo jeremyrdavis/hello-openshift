@@ -1,7 +1,7 @@
 package com.redhat.greetings.web.infrastructure;
 
 import com.redhat.greetings.domain.GreetingDTO;
-import com.redhat.greetings.repository.api.GreetingRepositoryAPI;
+import com.redhat.greetings.cqrs.api.GreetingRepositoryAPI;
 import com.redhat.greetings.web.domain.GreetingJSON;
 import com.redhat.greetings.web.domain.GreetingSubmission;
 import io.smallrye.mutiny.Uni;

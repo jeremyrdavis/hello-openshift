@@ -1,7 +1,7 @@
-package com.redhat.greetings.repository.api.infrastructure;
+package com.redhat.greetings.cqrs.api.infrastructure;
 
 import com.redhat.greetings.domain.GreetingDTO;
-import com.redhat.greetings.repository.api.GreetingRepositoryAPI;
+import com.redhat.greetings.cqrs.api.GreetingRepositoryAPI;
 import jakarta.enterprise.context.ApplicationScoped;
 import org.eclipse.microprofile.reactive.messaging.Incoming;
 import org.slf4j.Logger;
