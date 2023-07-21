@@ -4,8 +4,6 @@ import com.redhat.greetings.web.domain.GreetingJSON;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.mockito.InjectMock;
 import io.restassured.path.json.JsonPath;
-import jakarta.inject.Inject;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -15,7 +13,6 @@ import org.slf4j.LoggerFactory;
 import java.util.Arrays;
 
 import static io.restassured.RestAssured.when;
-import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @QuarkusTest

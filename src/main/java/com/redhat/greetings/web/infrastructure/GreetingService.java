@@ -1,10 +1,11 @@
 package com.redhat.greetings.web.infrastructure;
 
+import com.redhat.greetings.cqrs.api.CQRSService;
 import com.redhat.greetings.domain.GreetingDTO;
-import com.redhat.greetings.cqrs.api.GreetingRepositoryAPI;
 import com.redhat.greetings.web.domain.GreetingJSON;
 import com.redhat.greetings.web.domain.GreetingSubmission;
 import io.smallrye.mutiny.Uni;
+import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -13,8 +14,8 @@ import org.eclipse.microprofile.reactive.messaging.Emitter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @ApplicationScoped
 public class GreetingService {
@@ -24,7 +25,7 @@ public class GreetingService {
     List<GreetingJSON> greetingJSONList;
 
     @Inject
-    GreetingRepositoryAPI greetingRepositoryAPI;
+    CQRSService CQRSService;
 
     @Inject
     @Channel("greeting-submissions")
@@ -40,19 +41,17 @@ public class GreetingService {
     }
 
     public List<GreetingJSON> allGreetings() {
-        if (greetingJSONList == null) {
-            greetingJSONList = getGreetings();
-        }
         return greetingJSONList;
     }
 
     private List<GreetingJSON> getGreetings() {
-        if (greetingJSONList == null) {
-            greetingJSONList = new ArrayList<>();
-            greetingRepositoryAPI.allGreetings().forEach(greetingDTO -> {
-                greetingJSONList.add(new GreetingJSON(greetingDTO.text(), greetingDTO.author()));
-            });
-        }
-        return greetingJSONList;
+            return CQRSService.allGreetings().stream().map(greetingDTO -> {
+                return new GreetingJSON(greetingDTO.text(), greetingDTO.author());
+            }).collect(Collectors.toList());
+    }
+
+    @PostConstruct
+    void setUp() {
+        greetingJSONList = getGreetings();
     }
 }

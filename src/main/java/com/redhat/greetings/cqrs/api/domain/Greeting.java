@@ -52,5 +52,27 @@ public class Greeting extends PanacheEntity {
                 greetingDTO.isVerifiedFamilyFriendly());
     }
 
+    public Long getId() {
+        return id;
+    }
 
+    public String getText() {
+        return text;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public SourceSystem getSourceSystem() {
+        return sourceSystem;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public boolean isVerifiedFamilyFriendly() {
+        return isVerifiedFamilyFriendly;
+    }
 }

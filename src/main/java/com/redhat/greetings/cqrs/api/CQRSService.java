@@ -4,7 +4,7 @@ import com.redhat.greetings.domain.GreetingDTO;
 
 import java.util.List;
 
-public interface GreetingRepositoryAPI {
+public interface CQRSService {
 
     public void addGreeting(GreetingDTO greetingDTO);
 
