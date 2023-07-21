@@ -8,5 +8,5 @@ public interface CQRSService {
 
     public void addGreeting(GreetingDTO greetingDTO);
 
-    public List<GreetingDTO> allGreetings();
+    public List<GreetingDTO> listAllGreetings();
 }

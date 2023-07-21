@@ -44,7 +44,7 @@ public class GreetingServiceTest {
     @Test
     public void testAllGreetings() {
 
-        List<GreetingDTO> results = greetingService.allGreetings();
+        List<GreetingDTO> results = greetingService.listAllGreetings();
         assertNotNull(results);
         assertEquals(2, results.size());
     }

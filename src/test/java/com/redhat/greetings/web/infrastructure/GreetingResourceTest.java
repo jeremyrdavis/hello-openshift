@@ -12,7 +12,9 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 
+import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.when;
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @QuarkusTest
@@ -29,14 +31,24 @@ public class GreetingResourceTest {
 
     @BeforeEach
     void setUp() {
-
-        Mockito.when(greetingService.allGreetings()).thenReturn(Arrays.asList(new GreetingJSON(text, author)));
+        Mockito.when(greetingService.listAllGreetings()).thenReturn(Arrays.asList(new GreetingJSON(text, author)));
+        Mockito.when(greetingService.randomGreeting()).thenReturn(new GreetingJSON(text, author));
     }
 
     @Test
     public void testAllGreetings() {
-        JsonPath jsonpath = when().get("/greetings").jsonPath();
+        JsonPath jsonpath = when().get("/greeting/all").jsonPath();
         String resultingText= jsonpath.getString("text[0]");
         assertEquals(text, resultingText);
+    }
+
+    @Test
+    public void testRandomGreeting() {
+
+        given()
+                .when().get("/greeting")
+                .then()
+                .statusCode(200)
+                .body(containsString("text"));
     }
 }

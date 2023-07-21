@@ -1,4 +1,6 @@
 package com.redhat.greetings.web.domain;
 
-public record GreetingJSON(String text, String author) {
+import java.io.Serializable;
+
+public record GreetingJSON(String text, String author) implements Serializable {
 }

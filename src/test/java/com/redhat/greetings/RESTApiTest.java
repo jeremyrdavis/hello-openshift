@@ -25,7 +25,7 @@ public class RESTApiTest {
                 .header(HttpHeaders.CONTENT_TYPE, ContentType.JSON)
                 .body(json)
                 .when()
-                .request("POST", "/greetings")
+                .request("POST", "/greeting")
                 .then()
                 .statusCode(202);
 

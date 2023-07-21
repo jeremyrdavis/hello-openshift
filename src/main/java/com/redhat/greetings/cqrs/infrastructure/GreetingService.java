@@ -31,7 +31,7 @@ public class GreetingService implements CQRSService {
     }
 
     @Override
-    public List<GreetingDTO> allGreetings() {
+    public List<GreetingDTO> listAllGreetings() {
         return greetingRepository.streamAll().map(greeting -> {
             LOGGER.debug("greeting: {}", greeting);
             return new GreetingDTO(greeting.getId(), greeting.getText(), greeting.getAuthor(), greeting.getSourceSystem(), greeting.getCreatedAt(), greeting.isVerifiedFamilyFriendly());

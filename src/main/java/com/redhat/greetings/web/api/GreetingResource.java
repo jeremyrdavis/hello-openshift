@@ -10,7 +10,7 @@ import jakarta.ws.rs.core.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Path("/greetings")
+@Path("/greeting")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class GreetingResource {
@@ -30,8 +30,13 @@ public class GreetingResource {
     }
 
     @GET
+    @Path("/all")
     public Response allGreetings(){
+        return Response.ok().entity(greetingService.listAllGreetings()).build();
+    }
 
-        return Response.ok().entity(greetingService.allGreetings()).build();
+    @GET
+    public Response hello() {
+        return Response.ok().entity(greetingService.randomGreeting()).build();
     }
 }

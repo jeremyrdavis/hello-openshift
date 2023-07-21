@@ -4,9 +4,12 @@ import com.redhat.greetings.cqrs.api.CQRSService;
 import com.redhat.greetings.domain.GreetingDTO;
 import com.redhat.greetings.web.domain.GreetingJSON;
 import com.redhat.greetings.web.domain.GreetingSubmission;
+import io.quarkus.runtime.StartupEvent;
+import io.quarkus.scheduler.Scheduled;
 import io.smallrye.mutiny.Uni;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.event.Observes;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import org.eclipse.microprofile.reactive.messaging.Channel;
@@ -15,6 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 @ApplicationScoped
@@ -40,12 +44,12 @@ public class GreetingService {
         return null;
     }
 
-    public List<GreetingJSON> allGreetings() {
+    public List<GreetingJSON> listAllGreetings() {
         return greetingJSONList;
     }
 
     private List<GreetingJSON> getGreetings() {
-            return CQRSService.allGreetings().stream().map(greetingDTO -> {
+            return CQRSService.listAllGreetings().stream().map(greetingDTO -> {
                 return new GreetingJSON(greetingDTO.text(), greetingDTO.author());
             }).collect(Collectors.toList());
     }
@@ -53,5 +57,16 @@ public class GreetingService {
     @PostConstruct
     void setUp() {
         greetingJSONList = getGreetings();
+        LOGGER.debug("greetingJSONList hydrated");
+    }
+
+    @Scheduled(every="1m")
+    void refreshGreetingJSONList() {
+        greetingJSONList.addAll(getGreetings());
+    }
+
+
+    public GreetingJSON randomGreeting() {
+        return greetingJSONList.get(new Random().nextInt(greetingJSONList.size()));
     }
 }

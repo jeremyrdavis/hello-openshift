@@ -8,7 +8,6 @@ import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.TestProfile;
 import io.quarkus.test.junit.mockito.InjectMock;
 import jakarta.inject.Inject;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -20,13 +19,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static org.apache.groovy.json.internal.Chr.add;
 import static org.junit.jupiter.api.Assertions.*;
 
 @QuarkusTest @TestProfile(WebTestProfile.class)
-public class GreetingServiceTest {
+public class WebInfrastructureGreetingServiceTest {
 
-    static final Logger LOGGER = LoggerFactory.getLogger(GreetingServiceTest.class);
+    static final Logger LOGGER = LoggerFactory.getLogger(WebInfrastructureGreetingServiceTest.class);
 
     @Inject
     GreetingService greetingService;
@@ -36,15 +34,16 @@ public class GreetingServiceTest {
 
     @BeforeEach
     void setUp() {
-        Mockito.when(cqrsServiceMock.allGreetings()).thenReturn(
+        Mockito.when(cqrsServiceMock.listAllGreetings()).thenReturn(
                 Arrays.asList(
                         new GreetingDTO(1L, "Ace of Spades", "Lemmy Kilminster", SourceSystem.REST_API, Instant.now(), true),
                         new GreetingDTO(2L ,"Number of the Beast", "Bruce Dickinson", SourceSystem.REST_API, Instant.now(), true)));
+        assertNotNull(greetingService);
     }
 
     @Test
     public void testGetGreetings() {
-        List<GreetingJSON> result = greetingService.allGreetings();
+        List<GreetingJSON> result = greetingService.listAllGreetings();
         assertNotNull(result);
         assertEquals(2, result.size());
         AtomicBoolean containsLemmy = new AtomicBoolean(false);
