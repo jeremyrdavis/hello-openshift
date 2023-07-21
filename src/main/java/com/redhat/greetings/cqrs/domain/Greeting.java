@@ -1,4 +1,4 @@
-package com.redhat.greetings.cqrs.api.domain;
+package com.redhat.greetings.cqrs.domain;
 
 import com.redhat.greetings.domain.GreetingDTO;
 import com.redhat.greetings.domain.SourceSystem;

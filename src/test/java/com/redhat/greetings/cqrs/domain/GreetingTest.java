@@ -1,5 +1,6 @@
-package com.redhat.greetings.cqrs.api.domain;
+package com.redhat.greetings.cqrs.domain;
 
+import com.redhat.greetings.cqrs.domain.Greeting;
 import com.redhat.greetings.domain.GreetingDTO;
 import com.redhat.greetings.domain.SourceSystem;
 import org.junit.jupiter.api.Test;

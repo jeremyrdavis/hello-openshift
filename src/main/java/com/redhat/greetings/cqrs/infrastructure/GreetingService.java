@@ -1,6 +1,6 @@
-package com.redhat.greetings.cqrs.api.infrastructure;
+package com.redhat.greetings.cqrs.infrastructure;
 
-import com.redhat.greetings.cqrs.api.domain.GreetingRepository;
+import com.redhat.greetings.cqrs.domain.GreetingRepository;
 import com.redhat.greetings.domain.GreetingDTO;
 import com.redhat.greetings.cqrs.api.CQRSService;
 import jakarta.enterprise.context.ApplicationScoped;

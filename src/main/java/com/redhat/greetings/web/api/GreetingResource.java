@@ -1,4 +1,4 @@
-package com.redhat.greetings.web;
+package com.redhat.greetings.web.api;
 
 import com.redhat.greetings.web.domain.GreetingJSON;
 import com.redhat.greetings.web.infrastructure.GreetingService;
@@ -9,8 +9,6 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.Arrays;
 
 @Path("/greetings")
 @Consumes(MediaType.APPLICATION_JSON)

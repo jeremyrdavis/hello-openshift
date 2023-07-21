@@ -1,7 +1,7 @@
-package com.redhat.greetings.cqrs.api.infrastructure;
+package com.redhat.greetings.cqrs.infrastructure;
 
-import com.redhat.greetings.cqrs.api.domain.Greeting;
-import com.redhat.greetings.cqrs.api.domain.GreetingRepository;
+import com.redhat.greetings.cqrs.domain.Greeting;
+import com.redhat.greetings.cqrs.domain.GreetingRepository;
 import com.redhat.greetings.domain.GreetingDTO;
 import com.redhat.greetings.domain.SourceSystem;
 import io.quarkus.test.junit.QuarkusTest;
@@ -16,7 +16,6 @@ import org.slf4j.LoggerFactory;
 import java.time.Instant;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
